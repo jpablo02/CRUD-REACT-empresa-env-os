@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from '../services/firebase';
 // Importa el componente con la primera letra en mayúscula (ClientForm en lugar de clientForm)
 import ClientForm from '../components/ClientForm';
+import '../components/ClientForm';
 
 const Clients = () => {
   const [clients, setClients] = useState([]);

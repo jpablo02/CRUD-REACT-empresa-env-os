@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../services/firebase';
 import CityForm from '../components/CityForm';
+import '../components/CityForm';
 
 const Cities = () => {
   const [cities, setCities] = useState([]);

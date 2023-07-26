@@ -1,4 +1,4 @@
-/* src/components/productForm.css */
+/* src/components/cityform.css */
 
 .form-container {
   display: flex;
@@ -50,3 +50,15 @@
 .form-actions button:focus {
   outline: none;
 }
+
+/* Ajustes específicos para la página de Ciudades */
+/* Por ejemplo, puedes cambiar el color de fondo o agregar estilos adicionales */
+.form-container {
+  background-color: #f5f5f5;
+}
+
+.form-column input {
+  background-color: #f8f8f8;
+}
+
+/* ... Otros ajustes específicos para la página de Ciudades */
