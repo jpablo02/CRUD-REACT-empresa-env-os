@@ -3,8 +3,8 @@ import React from 'react';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Cities from './pages/Cities';
-import Products from './pages/Products'; // Agregamos la importación para Products
-import Clients from './pages/Clients'; // Agregamos la importación para Clients
+import Products from './pages/Products';
+import Clients from './pages/Clients';
 
 function App() {
   return (
@@ -12,10 +12,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Cities />} />
-        <Route path="/cities" element={<Cities />} /> {/* Ruta para mostrar Cities */}
-        <Route path="/products" element={<Products />} /> {/* Ruta para mostrar Products */}
-        <Route path="/clients" element={<Clients />} /> {/* Ruta para mostrar Clients */}
-        {/* Aquí puedes agregar más rutas */}
+        <Route path="/cities" element={<Cities />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/clients" element={<Clients />} />
       </Routes>
       <Footer />
     </Router>
