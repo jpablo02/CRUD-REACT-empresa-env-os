@@ -1,92 +1,52 @@
-/* styles.css */
+/* src/styles.css */
 
-/* Estilos generales */
+/* Estilos generales para toda la aplicación */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f1f1f1;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Estilos del encabezado */
-  header {
-    background-color: #282c34;
-    color: white;
-    padding: 10px;
-  }
-  
-  header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
-  
-  header nav li {
-    margin: 0 10px;
-  }
-  
-  header nav li a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-  }
-  
-  /* Estilos del contenido principal */
-  main {
-    padding: 20px 0;
-  }
-  
-  /* Estilos de la tabla */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  /* Estilos del formulario */
-  form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  form input[type="text"] {
-    padding: 10px;
-    margin-right: 10px;
-  }
-  
-  form button {
-    padding: 10px 20px;
-    background-color: #282c34;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #444;
-  }
-  
-  /* Estilos del footer */
-  footer {
-    background-color: #282c34;
-    color: white;
-    text-align: center;
-    padding: 10px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para el formulario de registro de productos y clientes */
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-column {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.form-column label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-column input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+/* Estilos para la tabla de productos */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Otros estilos específicos que desees agregar */

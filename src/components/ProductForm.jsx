@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import firebase from '../services/firebase';
+import 'firebase/storage';
+import './productForm.css';
 
 const ProductForm = ({ productToEdit }) => {
   const [productDetails, setProductDetails] = useState({
@@ -74,32 +76,95 @@ const ProductForm = ({ productToEdit }) => {
     });
   };
 
+  const handleImageChange = (e) => {
+    const imageFile = e.target.files[0];
+    const storageRef = firebase.storage().ref();
+    const imageRef = storageRef.child(imageFile.name);
+
+    imageRef.put(imageFile).then(() => {
+      // Obtener la URL de la imagen subida
+      imageRef.getDownloadURL().then((url) => {
+        setProductDetails({
+          ...productDetails,
+          packagePhoto: url,
+        });
+      });
+    });
+  };
+
   return (
-    <div>
+    <div className="form-container">
       <h2>{productToEdit ? 'Editar producto' : 'Registrar nuevo producto'}</h2>
       <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="Producto"
-          name="productName"
-          value={productDetails.productName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Ciudad de origen"
-          name="originCity"
-          value={productDetails.originCity}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Ciudad de destino"
-          name="destinationCity"
-          value={productDetails.destinationCity}
-          onChange={handleInputChange}
-        />
-        {/* ... Y así para los demás campos */}
+        <div className="form-column">
+          <label htmlFor="productName">Producto</label>
+          <input
+            type="text"
+            id="productName"
+            name="productName"
+            value={productDetails.productName}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="originCity">Ciudad de origen</label>
+          <input
+            type="text"
+            id="originCity"
+            name="originCity"
+            value={productDetails.originCity}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="destinationCity">Ciudad de destino</label>
+          <input
+            type="text"
+            id="destinationCity"
+            name="destinationCity"
+            value={productDetails.destinationCity}
+            onChange={handleInputChange}
+          />
+          {/* ... Otros campos relacionados con el producto */}
+        </div>
+        <div className="form-column">
+          <label htmlFor="originClient">Cliente de origen</label>
+          <input
+            type="text"
+            id="originClient"
+            name="originClient"
+            value={productDetails.originClient}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="destinationClient">Cliente de destino</label>
+          <input
+            type="text"
+            id="destinationClient"
+            name="destinationClient"
+            value={productDetails.destinationClient}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="shippingDate">Fecha de envío</label>
+          <input
+            type="date"
+            id="shippingDate"
+            name="shippingDate"
+            value={productDetails.shippingDate}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="deliveryDate">Fecha de entrega</label>
+          <input
+            type="date"
+            id="deliveryDate"
+            name="deliveryDate"
+            value={productDetails.deliveryDate}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="packagePhoto">Foto del paquete</label>
+          <input
+            type="file"
+            id="packagePhoto"
+            name="packagePhoto"
+            onChange={handleImageChange}
+          />
+          {/* ... Otros campos relacionados con el cliente */}
+        </div>
         <button type="submit">{productToEdit ? 'Guardar cambios' : 'Registrar producto'}</button>
       </form>
     </div>

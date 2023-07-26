@@ -43,6 +43,12 @@ const Products = () => {
             <th>Producto</th>
             <th>Ciudad de origen</th>
             <th>Ciudad de destino</th>
+            <th>Cliente de origen</th>
+            <th>Cliente de destino</th>
+            <th>Fecha de envío</th>
+            <th>Fecha de entrega</th>
+            <th>Foto del paquete</th>
+            {/* ... Otras columnas */}
             <th>Acciones</th>
           </tr>
         </thead>
@@ -53,6 +59,17 @@ const Products = () => {
               <td>{product.productName}</td>
               <td>{product.originCity}</td>
               <td>{product.destinationCity}</td>
+              <td>{product.originClient}</td>
+              <td>{product.destinationClient}</td>
+              <td>{product.shippingDate}</td>
+              <td>{product.deliveryDate}</td>
+              {/* Mostrar la imagen si ya se ha cargado */}
+              <td>
+                {product.packagePhoto && (
+                  <img src={product.packagePhoto} alt="Package" style={{ width: '100px' }} />
+                )}
+              </td>
+              {/* ... Otras celdas para las otras imágenes */}
               <td>
                 <button onClick={() => handleDeleteProduct(product.id)}>Eliminar</button>
               </td>
