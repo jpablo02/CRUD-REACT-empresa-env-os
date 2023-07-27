@@ -1,10 +1,12 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// src/App.js
+
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Cities from './pages/Cities';
-import Products from './pages/Products'; // Agregamos la importación para Products
-import Clients from './pages/Clients'; // Agregamos la importación para Clients
+import Products from './pages/Products';
+import Clients from './pages/Clients';
 import Home from './pages/Home';
 
 function App() {
@@ -12,10 +14,10 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Cities />} />
-        <Route path="/cities" element={<Cities />} /> {/* Ruta para mostrar Cities */}
-        <Route path="/products" element={<Products />} /> {/* Ruta para mostrar Products */}
-        <Route path="/clients" element={<Clients />} /> {/* Ruta para mostrar Clients */}
+        <Route path="/" element={<Home />} /> {/* Ruta para mostrar la página de inicio */}
+        <Route path="/cities" element={<Cities />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/clients" element={<Clients />} />
         {/* Aquí puedes agregar más rutas */}
       </Routes>
       <Footer />

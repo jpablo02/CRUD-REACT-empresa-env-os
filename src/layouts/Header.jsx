@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css'; // Agrega el archivo de estilos CSS correspondiente
+import logoImage from '../assets/Default_Create_a_minimalistic_and_clean_logo_of_D_and_R_focusi_2_3c65eb10-6994-468a-8ccb-bafbbf7d6dff_0.png'; // Asegúrate de cambiar 'nombre_de_la_imagen.jpg' por el nombre real de tu imagen y la extensión correcta
 
 const Header = () => {
   const location = useLocation();
@@ -11,7 +12,9 @@ const Header = () => {
     <header className="header">
       <div className="logo">
         {/* Agrega aquí el logo o título de tu aplicación si lo tienes */}
-        <Link to="/">Logo o Título</Link>
+        <Link to="/">
+          <img src={logoImage} alt="Logo" />
+        </Link>
       </div>
       <nav>
         <ul>

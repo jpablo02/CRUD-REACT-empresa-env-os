@@ -1,16 +1,9 @@
-// src/pages/Home.js
-
 import React from 'react';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Bienvenido a la página de inicio</h1>
-      {/* Aquí puedes agregar cualquier contenido que desees mostrar en la página de inicio */}
-      {/* Por ejemplo, una imagen de fondo */}
-      <div style={{ backgroundImage: 'url(path/to/your/image.jpg)', height: '500px', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        {/* Contenido adicional */}
-      </div>
+    <div style={{ backgroundImage: 'url(https://scontent.feoh8-1.fna.fbcdn.net/v/t39.30808-6/362288077_10160170192658271_7380722738226603788_n.jpg?_nc_cat=100&cb=99be929b-59f725be&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeFEwVLI6wT8b5b3D5590BOmmCXKUZD930uYJcpRkP3fS9S1DMLmrWM_wUrOAJXQCQM&_nc_ohc=gD07cfyGGT4AX9qIAko&_nc_zt=23&_nc_ht=scontent.feoh8-1.fna&oh=00_AfAgj2m2I0wvNxVrpEaTlWHW2nNvccbfqL8qMKrSvlrxHg&oe=64C6EE16)', height: '500px', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      {/* Contenido adicional */}
     </div>
   );
 };
