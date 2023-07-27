@@ -16,6 +16,9 @@ const Header = () => {
           <img src={logoImage} alt="Logo" className="logo-image" />
         </Link>
       </div>
+      <div className="header-text">
+        <p>TCC servicio de envíos</p>
+      </div>
       <nav>
         <ul>
           <li className={location.pathname === '/' ? 'active' : ''}>

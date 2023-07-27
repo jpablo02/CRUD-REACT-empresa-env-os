@@ -18,6 +18,17 @@
   max-width: 100%; /* Asegura que la imagen del logo se ajuste al ancho del contenedor */
 }
 
+.header-text {
+  flex: 1; /* El texto tomará el espacio restante */
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+.header-text p {
+  margin: 0; /* Elimina el margen del párrafo */
+  font-size: 18px;
+  font-weight: bold;
+}
+
 nav ul {
   display: flex;
   list-style: none;
