@@ -13,7 +13,7 @@ const Header = () => {
       <div className="logo">
         {/* Agrega aquí el logo o título de tu aplicación si lo tienes */}
         <Link to="/">
-          <img src={logoImage} alt="Logo" />
+          <img src={logoImage} alt="Logo" className="logo-image" />
         </Link>
       </div>
       <nav>
