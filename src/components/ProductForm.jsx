@@ -15,17 +15,26 @@ const ProductForm = ({ productToEdit }) => {
     packagePhoto: productToEdit ? productToEdit.packagePhoto : '',
     clientsPhoto: productToEdit ? productToEdit.clientsPhoto : '',
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    if (!productDetails.productName || !productDetails.originCity || !productDetails.destinationCity) {
+      setErrorMessage('Por favor, ingresa el nombre del producto, ciudad de origen y ciudad de destino.');
+      return;
+    }
+
+    // Puedes agregar aquí validaciones adicionales, por ejemplo, para las fechas de envío y entrega.
+
+    const collectionRef = firebase.firestore().collection('products');
+
     if (productToEdit) {
       // Si es una edición, actualizamos el producto en la base de datos de Firebase
-      firebase.firestore().collection('products').doc(productToEdit.id).update({
-        ...productDetails,
-      })
+      collectionRef
+        .doc(productToEdit.id)
+        .update({ ...productDetails })
         .then(() => {
-          // Limpiar los campos después de editar el producto
           setProductDetails({
             productName: '',
             originCity: '',
@@ -37,17 +46,18 @@ const ProductForm = ({ productToEdit }) => {
             packagePhoto: '',
             clientsPhoto: '',
           });
+          setErrorMessage('');
+          // Mostrar mensaje de éxito al usuario si lo deseas
         })
         .catch((error) => {
           console.error('Error al editar el producto:', error);
+          setErrorMessage('Error al editar el producto. Por favor, intenta nuevamente.');
         });
     } else {
       // Si es un registro nuevo, guardamos el producto en la base de datos de Firebase
-      firebase.firestore().collection('products').add({
-        ...productDetails,
-      })
+      collectionRef
+        .add({ ...productDetails })
         .then(() => {
-          // Limpiar los campos después de registrar el producto
           setProductDetails({
             productName: '',
             originCity: '',
@@ -59,9 +69,12 @@ const ProductForm = ({ productToEdit }) => {
             packagePhoto: '',
             clientsPhoto: '',
           });
+          setErrorMessage('');
+          // Mostrar mensaje de éxito al usuario si lo deseas
         })
         .catch((error) => {
           console.error('Error al registrar el producto:', error);
+          setErrorMessage('Error al registrar el producto. Por favor, intenta nuevamente.');
         });
     }
   };
@@ -77,6 +90,7 @@ const ProductForm = ({ productToEdit }) => {
   return (
     <div>
       <h2>{productToEdit ? 'Editar producto' : 'Registrar nuevo producto'}</h2>
+      {errorMessage && <p>{errorMessage}</p>}
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
@@ -99,7 +113,7 @@ const ProductForm = ({ productToEdit }) => {
           value={productDetails.destinationCity}
           onChange={handleInputChange}
         />
-        {/* ... Y así para los demás campos */}
+        {/* Agregar más campos de entrada aquí si es necesario */}
         <button type="submit">{productToEdit ? 'Guardar cambios' : 'Registrar producto'}</button>
       </form>
     </div>

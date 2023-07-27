@@ -5,6 +5,7 @@ import Footer from './layouts/Footer';
 import Cities from './pages/Cities';
 import Products from './pages/Products'; // Agregamos la importación para Products
 import Clients from './pages/Clients'; // Agregamos la importación para Clients
+import Home from './pages/Home';
 
 function App() {
   return (

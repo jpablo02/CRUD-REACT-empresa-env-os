@@ -8,39 +8,44 @@ const ClientForm = ({ clientToEdit }) => {
     name: clientToEdit ? clientToEdit.name : '',
     email: clientToEdit ? clientToEdit.email : '',
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    if (!clientDetails.name || !clientDetails.email) {
+      setErrorMessage('Por favor, ingresa el nombre y correo electrónico del cliente.');
+      return;
+    }
+
+    const collectionRef = firebase.firestore().collection('clients');
+
     if (clientToEdit) {
       // Si es una edición, actualizamos el cliente en la base de datos de Firebase
-      firebase.firestore().collection('clients').doc(clientToEdit.id).update({
-        ...clientDetails,
-      })
+      collectionRef
+        .doc(clientToEdit.id)
+        .update({ ...clientDetails })
         .then(() => {
-          // Limpiar los campos después de editar el cliente
-          setClientDetails({
-            name: '',
-            email: '',
-          });
+          setClientDetails({ name: '', email: '' });
+          setErrorMessage('');
+          // Mostrar mensaje de éxito al usuario si lo deseas
         })
         .catch((error) => {
           console.error('Error al editar el cliente:', error);
+          setErrorMessage('Error al editar el cliente. Por favor, intenta nuevamente.');
         });
     } else {
       // Si es un registro nuevo, guardamos el cliente en la base de datos de Firebase
-      firebase.firestore().collection('clients').add({
-        ...clientDetails,
-      })
+      collectionRef
+        .add({ ...clientDetails })
         .then(() => {
-          // Limpiar los campos después de registrar el cliente
-          setClientDetails({
-            name: '',
-            email: '',
-          });
+          setClientDetails({ name: '', email: '' });
+          setErrorMessage('');
+          // Mostrar mensaje de éxito al usuario si lo deseas
         })
         .catch((error) => {
           console.error('Error al registrar el cliente:', error);
+          setErrorMessage('Error al registrar el cliente. Por favor, intenta nuevamente.');
         });
     }
   };
@@ -56,6 +61,7 @@ const ClientForm = ({ clientToEdit }) => {
   return (
     <div>
       <h2>{clientToEdit ? 'Editar cliente' : 'Registrar nuevo cliente'}</h2>
+      {errorMessage && <p>{errorMessage}</p>}
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"

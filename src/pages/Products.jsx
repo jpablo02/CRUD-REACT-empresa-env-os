@@ -6,6 +6,7 @@ import ProductForm from '../components/ProductForm';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     // Obtener los productos de la base de datos de Firebase al cargar la página
@@ -23,19 +24,26 @@ const Products = () => {
   }, []);
 
   const handleDeleteProduct = (productId) => {
-    // Eliminar el producto de la base de datos de Firebase
-    firebase.firestore().collection('products').doc(productId).delete()
-      .catch((error) => {
-        console.error('Error al eliminar el producto:', error);
-      });
+    if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+      // Eliminar el producto de la base de datos de Firebase
+      firebase.firestore().collection('products').doc(productId).delete()
+        .then(() => {
+          setMessage('Producto eliminado correctamente.');
+        })
+        .catch((error) => {
+          console.error('Error al eliminar el producto:', error);
+          setMessage('Error al eliminar el producto. Por favor, intenta nuevamente.');
+        });
+    }
   };
 
   return (
     <div>
       <h1>Productos</h1>
-      <ProductForm />
+      <ProductForm setMessage={setMessage} />
 
       <h2>Lista de productos</h2>
+      {message && <p>{message}</p>}
       <table>
         <thead>
           <tr>

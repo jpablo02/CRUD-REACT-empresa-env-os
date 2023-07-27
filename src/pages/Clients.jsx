@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import firebase from '../services/firebase';
-// Importa el componente con la primera letra en mayúscula (ClientForm en lugar de clientForm)
 import ClientForm from '../components/ClientForm';
 
 const Clients = () => {
   const [clients, setClients] = useState([]);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     // Obtener los clientes de la base de datos de Firebase al cargar la página
@@ -26,10 +26,10 @@ const Clients = () => {
   return (
     <div className="page-container">
       <h1>Clientes</h1>
-      {/* Usa el componente con la primera letra en mayúscula (ClientForm en lugar de clientForm) */}
-      <ClientForm />
+      <ClientForm setMessage={setMessage} />
 
       <h2>Lista de clientes</h2>
+      {message && <p>{message}</p>}
       <table>
         <thead>
           <tr>

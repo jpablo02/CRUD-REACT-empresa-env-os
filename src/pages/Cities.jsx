@@ -6,6 +6,7 @@ import CityForm from '../components/CityForm';
 
 const Cities = () => {
   const [cities, setCities] = useState([]);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     // Obtener las ciudades de la base de datos de Firebase al cargar la página
@@ -23,11 +24,17 @@ const Cities = () => {
   }, []);
 
   const handleDeleteCity = (cityId) => {
-    // Eliminar la ciudad de la base de datos de Firebase
-    firebase.firestore().collection('cities').doc(cityId).delete()
-    .catch((error) => {
-      console.error('Error al eliminar la ciudad:', error);
-    });
+    if (window.confirm('¿Estás seguro de que deseas eliminar esta ciudad?')) {
+      // Eliminar la ciudad de la base de datos de Firebase
+      firebase.firestore().collection('cities').doc(cityId).delete()
+        .then(() => {
+          setMessage('Ciudad eliminada correctamente.');
+        })
+        .catch((error) => {
+          console.error('Error al eliminar la ciudad:', error);
+          setMessage('Error al eliminar la ciudad. Por favor, intenta nuevamente.');
+        });
+    }
   };
 
   return (
@@ -36,6 +43,7 @@ const Cities = () => {
       <CityForm />
 
       <h2>Lista de ciudades</h2>
+      {message && <p>{message}</p>}
       <table>
         <thead>
           <tr>
