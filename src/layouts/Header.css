@@ -1,7 +1,7 @@
 /* src/layouts/Header.css */
 
 .header {
-  background-color: #660044;
+  background-color: rgba(102, 0, 68, 0.7); /* Color de fondo con opacidad */
   color: #fff;
   padding: 10px;
   display: flex;
