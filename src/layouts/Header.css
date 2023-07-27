@@ -5,35 +5,32 @@
   color: #fff;
   padding: 10px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; /* Alinea los elementos a los extremos */
+  height: 80px; /* Ajusta la altura del header según tus necesidades */
 }
 
 .logo {
-  flex: 1;
-  max-width: 100px; /* Ajusta el ancho máximo del logo */
+  display: flex;
+  align-items: center;
 }
 
 .logo-image {
-  max-width: 100%; /* Asegura que la imagen del logo se ajuste al ancho del contenedor */
+  width: 50px; /* Ajusta el tamaño del logo según tus necesidades */
+  margin-right: 10px; /* Ajusta el espacio entre el logo y el título */
 }
 
-.header-text {
-  flex: 1; /* El texto tomará el espacio restante */
-  text-align: center; /* Centra el texto horizontalmente */
-}
-
-.header-text p {
-  margin: 0; /* Elimina el margen del párrafo */
-  font-size: 18px;
-  font-weight: bold;
+.title {
+  font-family: 'Nunito Sans', sans-serif; /* Asegúrate de importar la fuente personalizada */
+  font-size: 24px; /* Ajusta el tamaño del texto del título según tus necesidades */
+  letter-spacing: 2px; /* Añade un espaciado entre letras para resaltar */
 }
 
 nav ul {
-  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
 }
 
 nav ul li {

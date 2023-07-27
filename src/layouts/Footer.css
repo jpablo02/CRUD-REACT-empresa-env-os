@@ -1,14 +1,17 @@
 /* src/layouts/Footer.css */
 
+/* src/layouts/Footer.css */
+
 .footer {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+  background-color: rgba(0, 0, 0, 0.5); /* Utilizamos 'rgba' para definir un color con opacidad */
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
   
   .footer p {
     margin: 0; /* Eliminar el margen para que los elementos estén más juntos */
