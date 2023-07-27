@@ -2,10 +2,43 @@
 
 .footer {
     background-color: #000000;
+    color: #ffffff;
     padding: 10px;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
+  }
+  
+  .footer p {
+    margin: 0; /* Eliminar el margen para que los elementos estén más juntos */
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer ul {
+    list-style: none; /* Eliminar las viñetas de la lista */
+    padding: 0;
+    display: flex; /* Mostrar los elementos en línea */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    margin: 0; /* Agregar un margen vertical de 0 para que los elementos estén más cerca */
+  }
+  
+  .footer li {
+    margin: 0 10px; /* Agregar un margen horizontal entre los elementos en línea */
+    margin-top: 1%;
+    margin-bottom: 10px;
+  }
+  
+  .footer a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+  }
+  
+  /* Opcional: Cambiar el color y estilo de los enlaces al pasar el cursor sobre ellos */
+  .footer a:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
   }
   
